@@ -1,0 +1,43 @@
+{% extends 'layouts.html' %}
+
+{% block title %}
+	Index Page
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    	<div class="d-flex justify-content-between">
+	        <h1>List member</h1>
+	        <div>
+		        <a class="btn btn-success" href="{% url 'members.add' %}">Create</a>
+		    </div>
+    	</div>
+    	{% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Note</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu từ CSDL sẽ được lặp và điền vào các dòng -->
+                {% for x in members %}
+                <tr>
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.email }}</td>
+                    <td>{{ x.phone }}</td>
+                    <td>{{ x.note }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'members.edit' x.id %}">Edit</a>
+                        <button class="btn btn-danger btn-delete-record" data-url="{% url 'members.remove' x.id %}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

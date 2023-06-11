@@ -1,0 +1,35 @@
+{% extends 'layouts.html' %}
+
+{% block title %}
+	Edit Page
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Edit</h2>
+        <form action="{% url 'members.edit' member.id %}" method="POST">
+        	{% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ member.name }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ member.email }}">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ member.phone }}">
+            </div>
+			<div class="form-group">
+                <label for="note">Note</label>
+                <textarea type="text" class="form-control" id="note" name="note">{{ member.note }}</textarea>
+            </div>
+
+			<div class="d-flex justify-content-between">
+	           <button type="submit" class="btn btn-primary">Save</button>
+	            <a class="btn btn-secondary" href="{% url 'members' %}">Back to List</a>
+	        </div> 
+        </form>
+    </div>
+{% endblock %}
