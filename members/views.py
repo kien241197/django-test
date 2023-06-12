@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from .models import Member
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from pprint import pprint
 
@@ -26,6 +27,7 @@ def member_create(request):
 		obj.email = request.POST.get('email')
 		obj.phone = request.POST.get('phone')
 		obj.note = request.POST.get('note')
+		obj.joined_at = datetime.now().date()
 		obj.save()
 		return redirect('members')
 	return HttpResponse(template.render({}, request))
