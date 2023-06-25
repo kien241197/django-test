@@ -9,7 +9,7 @@
         <h2>Create</h2>
         <form action="{% url 'members.add' %}" method="POST">
         	{% csrf_token %}
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name">
             </div>
@@ -24,7 +24,10 @@
 			<div class="form-group">
                 <label for="note">Note</label>
                 <textarea type="text" class="form-control" id="note" name="note"></textarea>
-            </div>
+            </div> -->
+            <table class="m-auto">
+                {{ form.as_table }}
+            </table>
 
             <div class="d-flex justify-content-between">
 	            <button type="submit" class="btn btn-primary">Create</button>
