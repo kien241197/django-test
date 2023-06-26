@@ -6,8 +6,9 @@
 
 
 {% block content %}
-  <h1 class="text-center">Test Web</h1>
-
-  <h3><a href="{% url 'members' %}">Members</a></h3>
-  
+  <h1 class="text-center">Test Web Django</h1>
+    <ul>
+    <li><h3><a href="{% url 'companies' %}">Companies</a></h3></li>
+    <li><h3><a href="{% url 'members' %}">Members</a></h3></li>
+    </ul>
 {% endblock %}

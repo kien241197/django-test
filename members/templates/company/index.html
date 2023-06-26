@@ -1,0 +1,47 @@
+{% extends 'layouts.html' %}
+
+{% block title %}
+	List Company Page
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    	<div class="d-flex justify-content-between">
+	        <h1>List company</h1>
+	        <div>
+		        <a class="btn btn-success" href="{% url 'companies.add' %}">Create</a>
+		    </div>
+    	</div>
+        <div class="d-flex justify-content-end mb-2">
+            <form action="" method="GET">
+               <input type="text" name="search" value="{{ request.GET.search }}">
+               <button type="submit">Search</button>
+            </form>
+        </div>
+    	{% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Note</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu từ CSDL sẽ được lặp và điền vào các dòng -->
+                {% for x in companies %}
+                <tr>
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.address }}</td>
+                    <td>{{ x.note }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'companies.edit' x.id %}">Edit</a>
+                        <button class="btn btn-danger btn-delete-record" data-url="{% url 'companies.remove' x.id %}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -12,6 +12,22 @@
 
 <body>
 	<main>
+    <header class="p-3 bg-dark text-white mb-3">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-between">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">Home</a></li>
+              <li><a href="{% url 'companies' %}" class="nav-link px-2 text-white">Companies</a></li>
+              <li><a href="{% url 'members' %}" class="nav-link px-2 text-white">Members</a></li>
+            </ul>
+
+            <div class="text-end">
+              <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+            </div>
+          </div>
+        </div>
+      </header>
         {% block content %}
         <!-- Default content if not overridden in child templates -->
         {% endblock %}

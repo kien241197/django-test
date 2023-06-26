@@ -8,7 +8,7 @@ class Company(models.Model):
   created_at = models.DateField(null=True)
 
   def __str__(self):
-  	return f"{self.name} {self.address} {self.created_at}"
+  	return f"{self.name}"
 
 class Member(models.Model):
   name = models.CharField(max_length=255)
