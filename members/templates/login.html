@@ -9,6 +9,7 @@
 <div class="container">
     <form method="POST" action="{% url 'login' %}" class="border p-3">
         {% csrf_token %}
+        <input type="hidden" id="next" name="next" value="{{ request.GET.next }}"/>
       <h1 class="text-center">Login Django</h1>
       <!-- Email input -->
       <div class="form-outline mb-4">
