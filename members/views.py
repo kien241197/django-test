@@ -15,9 +15,11 @@ def home(request):
 
 def members(request):
 	query = request.GET.get('search')
-	members = Member.objects.filter(
-		Q(name__icontains=query) | Q(email__icontains=query) | Q(note__icontains=query)
-	).order_by('-id')
+	members = Member.objects.order_by('-id')
+	if query:
+		members = members.filter(
+			Q(name__icontains=query) | Q(email__icontains=query) | Q(note__icontains=query)
+		)
 	template = loader.get_template('index.html')
 	context = {
 		'members': members,

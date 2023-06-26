@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import Member
+from . import models
 
 # Register your models here.
 
 class MemberAdmin(admin.ModelAdmin):
- 	list_display = ("name", "email", "phone", "joined_at",)
-admin.site.register(Member, MemberAdmin)
+ 	list_display = ("name", "email", "phone", "joined_at", "company")
+class CompanyAdmin(admin.ModelAdmin):
+ 	list_display = ("name", "address", "created_at",)
+admin.site.register(models.Member, MemberAdmin)
+admin.site.register(models.Company, CompanyAdmin)
